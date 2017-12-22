@@ -4,10 +4,6 @@ import math
 import string
 import numpy as np
 import pandas as pd
-import matplotlib
-matplotlib.use('Agg')
-import matplotlib.pyplot as plt
-from sklearn.manifold import TSNE
 from sklearn.preprocessing import LabelEncoder
 from keras.models import load_model
 from keras import regularizers
@@ -77,18 +73,6 @@ def nnModel(n_users, n_items, k_factors):
     model.compile(loss='mse', optimizer='adamax')
     model.summary()
     return model
-
-def draw(x, y):
-    y = np.array(y)
-    x = np.array(x, dtype=np.float64)
-    vis_data = TSNE(n_components=2).fit_transform(x)
-    vis_x = vis_data[:, 0]
-    vis_y = vis_data[:, 1]
-
-    cm = plt.cm.get_cmap('RdYlBu')
-    sc = plt.scatter(vis_x, vis_y, c=y, cmap=cm)
-    plt.colorbar(sc)
-    plt.savefig('tsne.png')
 
 # load data
 with open(user_path, "r", encoding='UTF-8', errors='ignore') as ins:
@@ -216,9 +200,6 @@ else:
 #y_test = model.predict([test_user, test_movie, test_movie_other], verbose=1)
 y_test = model.predict([test_user, test_movie], verbose=1)
 y_test = y_test * rating_std + rating_avg
-
-# tsne
-#draw(movie_emb, movie_genres)
 
 #output
 ans = []
