@@ -1,5 +1,5 @@
 # ML2017FALL @ NTU #
-HWs for Machine Learning (EE5184) taken at NTU in Fall 2017
+HWs for Machine Learning (EE5184) taken at NTU in Fall 2017 <br />
 Lecturer: Prof. Hung-yi Lee
 
 ## DO NOT COPY. Only for reference ##
